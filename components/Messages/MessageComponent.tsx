@@ -1,11 +1,12 @@
 // components/MessagesComponent.tsx
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
-import useMessages from '../../hooks/useFetchMessages';
+import useFetchMessages from '../../hooks/useFetchMessages';
 import { Message } from '../../types/message';
 
 const MessagesComponent: React.FC = () => {
-  const { messages, loading, error } = useMessages();
+  const receiver_id = '1';
+  const { messages, loading, error } = useFetchMessages(receiver_id);
 
   if (loading) {
     return <ActivityIndicator />;

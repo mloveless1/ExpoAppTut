@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Message } from '../types/message';
 
-const useFetchMessages = () => {
+const useFetchMessages = (receiverId: string) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    axios.get<Message[]>('http://localhost:5000/messages/${receiver_id}')
+    axios.get<Message[]>(`http://localhost:5000/messages/${receiverId}`)
       .then(response => {
         setMessages(response.data);
       })
@@ -19,11 +19,9 @@ const useFetchMessages = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [receiverId]);
 
-  // Functions for add, update, delete can be added here
-
-  return { messages, loading, error, setMessages }; // Include setMessages for external manipulation
+  return { messages, loading, error };
 };
 
 export default useFetchMessages;
