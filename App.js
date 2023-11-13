@@ -1,7 +1,8 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import UserProfileCard from './components/UserProfileCard/UserProfileCard'; // Adjust the import path as needed
 import ProfileComponent from './components/UserProfileCard/ProfileComponent';
+import { NavigationContainer } from '@react-navigation/native';
+
 
 const App = () => {
   return (
